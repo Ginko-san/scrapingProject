@@ -16,7 +16,11 @@
 ## Badges
 
 [![Build Status](https://img.shields.io/badge/Status-Development-yellow.svg?style=flat)]()
-[![PHP Version](https://img.shields.io/badge/PHP-7.1.4-blue.svg?style=flat)](http://php.net/releases/7_1_4.php)
-[![Laravel Version](https://img.shields.io/badge/Laravel-5-blue.svg?style=flat)](https://laravel.com/docs/5.0)
-[![Composer Version](https://img.shields.io/badge/Composer-1.4.1-blue.svg?style=flat)](https://getcomposer.org/download/)
-[![Postgresql Version](https://img.shields.io/badge/PostgreSQL-9.6.3-yellow.svg?style=flat)](https://www.postgresql.org/download/)
+
+[![Build Status](https://img.shields.io/badge/PHP-7.1.4-blue.svg?style=flat)](http://php.net/releases/7_1_4.php)
+
+[![Build Status](https://img.shields.io/badge/Laravel-5-blue.svg?style=flat)](https://laravel.com/docs/5.0)
+
+[![Build Status](https://img.shields.io/badge/Composer-1.4.1-blue.svg?style=flat)](https://getcomposer.org/download/)
+
+[![Build Status](https://img.shields.io/badge/PostgreSQL-9.6.3-yellow.svg?style=flat)](https://www.postgresql.org/download/)
