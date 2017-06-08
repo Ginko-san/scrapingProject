@@ -19,7 +19,7 @@ class PromocionesController extends Controller {
     public function index()
     { 
       $promociones = Promociones::all(); 
-      return view('promociones.create',['promociones'=>$promociones]);
+      return view('promociones.index',['promociones'=>$promociones]);
     }
 
     /**
