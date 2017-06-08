@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form" action={{ route('PromocionesController@create') }} method="post">     
+            <form class="form-horizontal" role="form" action=route('promociones/create') }} method="POST">     
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
                     <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">

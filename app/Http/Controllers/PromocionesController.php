@@ -2,7 +2,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\Controller;
 use App\Promociones;
+
 
 class PromocionesController extends Controller {
 
@@ -19,7 +23,7 @@ class PromocionesController extends Controller {
     public function index()
     { 
       $promociones = Promociones::all(); 
-      return view('promociones.index',['promociones'=>$promociones]);
+      return view('promociones.create',['promociones'=>$promociones]);
     }
 
     /**
@@ -29,9 +33,9 @@ class PromocionesController extends Controller {
      */
     public function create()
     {
+         
         return view('promociones.create');//Se va a la vista create
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -48,8 +52,14 @@ class PromocionesController extends Controller {
           'validez'=>'required',
           'imagenusers'=>'required',
       ]);
-      $promociones = new Promociones($request->all());;
-      
+      $promociones = new Promociones;
+      $promociones->nombre = $request->nombre;        
+      $promociones->precioReal = $request->precioReal;
+      $promociones->precioOferta = $request->precioOferta;
+      $promociones->ahorro = $request->ahorro;
+      $promociones->cantVentas = $request->cantVentas;
+      $promociones->validez = $request->validez;
+      $promociones->imagenusers = $request->imagenusers;
       $promociones->save();
 
       return redirect('promocion')->with('message','data has been updated!');

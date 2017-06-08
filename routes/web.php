@@ -13,7 +13,9 @@
 
 Route::get('/', 'HomeController@index');
 
+
 Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -22,8 +24,17 @@ Route::get('/contact', 'ContactUSController@contactUS')->name('contact');
 Route::post('contact', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
 
 
-//Rutas de promociones
+//Rutas generales
 Route::group(['middleware' => ['web']], function(){
+    Route::resource('/promociones', 'PromocionesController');
+    Route::resource('/cupones', 'CuponesController');
+});
+
+
+
+
+//Rutas de promociones
+/*Route::group(['middleware' => ['web']], function(){
     Route::resource('/promociones', 'PromocionesController');
     Route::resource('/promociones/create','PromocionesController@create');
 });
@@ -34,8 +45,5 @@ Route::post('promociones', ['as'=>'promociones.create','uses'=>'PromocionesContr
 });*/
 
 
-//Rutas de cupones
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/cupones', 'CuponesController');
-});
+
 
