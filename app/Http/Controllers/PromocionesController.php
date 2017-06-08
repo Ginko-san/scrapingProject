@@ -23,7 +23,7 @@ class PromocionesController extends Controller {
     public function index()
     { 
       $promociones = Promociones::all(); 
-      return view('promociones.create',['promociones'=>$promociones]);
+      return view('promociones.index',['promociones'=>$promociones]);
     }
 
     /**
@@ -52,14 +52,7 @@ class PromocionesController extends Controller {
           'validez'=>'required',
           'imagenusers'=>'required',
       ]);
-      $promociones = new Promociones;
-      $promociones->nombre = $request->nombre;        
-      $promociones->precioReal = $request->precioReal;
-      $promociones->precioOferta = $request->precioOferta;
-      $promociones->ahorro = $request->ahorro;
-      $promociones->cantVentas = $request->cantVentas;
-      $promociones->validez = $request->validez;
-      $promociones->imagenusers = $request->imagenusers;
+      $promociones = new Promociones($request->all());
       $promociones->save();
 
       return redirect('promocion')->with('message','data has been updated!');
