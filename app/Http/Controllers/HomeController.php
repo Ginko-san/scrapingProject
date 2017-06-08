@@ -25,9 +25,9 @@ class HomeController extends Controller
     public function index()
     {
 
-        $promociones = DB::table('Promocion')->limit(30)->get();
+        $promociones = DB::table('promociones')->limit(30)->get();
 
-        $cupones = DB::table('Cupon')->limit(30)->get();
+        $cupones = DB::table('promociones')->limit(30)->get();
 
         return view('home',['promociones'=> $promociones , 'cupones' => $cupones]);
     }

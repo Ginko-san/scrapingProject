@@ -21,8 +21,8 @@ class PromocionesController extends Controller {
      * @return Response
      */
     public function index()
-    { 
-      $promociones = Promociones::all(); 
+    {
+      $promociones = Promociones::all();
       return view('promociones.index',['promociones'=>$promociones]);
     }
 
@@ -33,7 +33,7 @@ class PromocionesController extends Controller {
      */
     public function create()
     {
-         
+
         return view('promociones.create');//Se va a la vista create
     }
     /**
@@ -55,7 +55,7 @@ class PromocionesController extends Controller {
       $promociones = new Promociones($request->all());
       $promociones->save();
 
-      return redirect('promocion')->with('message','data has been updated!');
+      return redirect('promociones')->with('message','data has been updated!');
     }
 
     /**
@@ -85,7 +85,7 @@ class PromocionesController extends Controller {
     {
       $promocion = Promociones::find($idPromocion);
 
-      return view('promociones.edit',['promocion'=>$promocion]);
+      return view('promociones.edit',['promociones'=>$promocion]);
     }
 
     /**
@@ -111,7 +111,7 @@ class PromocionesController extends Controller {
               $promociones->validez = $request->validez;
               $promociones->imagenusers = $request->imagenusers;
               $promociones->save();
-              return redirect('promocion')->with('message','data has been updated!');
+              return redirect('promociones')->with('message','data has been updated!');
         }
     }
 
@@ -127,7 +127,7 @@ class PromocionesController extends Controller {
 
         $promocion->delete();
 
-        return redirect('promocion')->with('message','data has been deleted!');
+        return redirect('promociones')->with('message','data has been deleted!');
     }
 
 

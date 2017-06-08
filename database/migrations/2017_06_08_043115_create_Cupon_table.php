@@ -13,15 +13,16 @@ class CreateCuponTable extends Migration
      */
     public function up()
     {
-        Schema::create('flights', function (Blueprint $table) {
-            $table->increments('idCupon')->unique()->primary();
-            $table->char('nombre', 300);
+        Schema::create('cupones', function (Blueprint $table) {
+            $table->increments('idCupon')->unique();
+            $table->char('nombre',255);
             $table->bigInteger('precioReal');
             $table->bigInteger('precioOferta');
             $table->integer('ahorro');
             $table->bigInteger('cantVentas');
             $table->char('validez', 15);
-            $table->char('imagen', 300);
+            $table->char('imagen', 255);
+            $table->string('url');
 
             $table->timestamps();
         });
@@ -34,7 +35,6 @@ class CreateCuponTable extends Migration
      */
     public function down()
     {
-        Schema::drop('flights');    }
+        Schema::drop('cupones');
     }
 }
-
