@@ -180,6 +180,8 @@ return [
         // Other service providers...
 
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        'Collective\Html\HtmlServiceProvider',
     ],
 
     /*
@@ -230,6 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
+        'Form' => 'Collective\Html\FormFacade',
     ],
 
 ];

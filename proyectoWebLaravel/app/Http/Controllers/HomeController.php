@@ -31,8 +31,4 @@ class HomeController extends Controller
 
         return view('home',['promociones'=> $promociones , 'cupones' => $cupones]);
     }
-    public function contact()
-    {
-        return view('contact');
-    }
 }
