@@ -23,7 +23,7 @@ class CreatePromocionTable extends Migration
             $table->char('validez', 15);
             $table->char('imagenusers', 255);
             $table->string('url');
-
+            $table->rememberToken();
             $table->timestamps();
         });
         //

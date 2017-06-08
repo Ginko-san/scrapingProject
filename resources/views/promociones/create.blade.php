@@ -2,7 +2,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form" action={{ route('promociones.store') }} method="POST">     
+          @if(Session::has('message'))
+  				    <div class="alert alert-success">
+  				      {{ Session::get('message') }}
+  				    </div>
+  				@endif
+        </div>
+        <div class="row">
+            <form class="form-horizontal" role="form" action='promociones/store' method="GET">
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
                     <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
@@ -31,6 +38,11 @@
                 <div class="form-group">
                     <label for="imagenusers">Imagen</label>
                     <input type="text" class="form-control" id="imagenusers" name="imagenusers" placeholder="Imagen"></input>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">Imagen</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="URL original"></input>
                 </div>
                 <div class="form-group">
                     <div class="col-md-6 col-md-offset-4">

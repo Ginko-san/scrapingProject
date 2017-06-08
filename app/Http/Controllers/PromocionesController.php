@@ -5,8 +5,8 @@ use Illuminate\Http\Request;
 
 
 use App\Http\Controllers\Controller;
-use App\Promociones;
-
+use App\Promocion;
+use DB;
 
 class PromocionesController extends Controller {
 
@@ -22,7 +22,7 @@ class PromocionesController extends Controller {
      */
     public function index()
     {
-      $promociones = Promociones::all();
+      $promociones = Promocion::all();
       return view('promociones.index',['promociones'=>$promociones]);
     }
 
@@ -51,9 +51,22 @@ class PromocionesController extends Controller {
           'cantVentas'=>'required',
           'validez'=>'required',
           'imagenusers'=>'required',
+          'url'=>'required',
       ]);
       $promociones = new Promociones($request->all());
       $promociones->save();
+      DB::table('promociones')->insert(
+        [
+          'nombre'=>$request->Nombre,
+          'precioReal'=>$request->precioReal,
+          'precioOferta'=>$request->precioOferta,
+          'ahorro'=>$request->ahorro,
+          'cantVentas'=>$request->cantVentas,
+          'validez'=>$request->validez,
+          'imagenusers'=>$request->imagenusers,
+          'url'=>$request->url,
+      ]
+    );
 
       return redirect('promociones')->with('message','data has been updated!');
     }
@@ -83,7 +96,7 @@ class PromocionesController extends Controller {
      */
     public function edit($idPromocion)
     {
-      $promocion = Promociones::find($idPromocion);
+      $promocion = Promocion::find($idPromocion);
 
       return view('promociones.edit',['promociones'=>$promocion]);
     }
@@ -102,7 +115,7 @@ class PromocionesController extends Controller {
              abort(404);
         }
         else{
-              $promociones = new Promociones;
+              $promociones = new Promocion;
               $promociones->nombre = $request->nombre;
               $promociones->precioReal = $request->precioReal;
               $promociones->precioOferta = $request->precioOferta;
@@ -110,6 +123,7 @@ class PromocionesController extends Controller {
               $promociones->cantVentas = $request->cantVentas;
               $promociones->validez = $request->validez;
               $promociones->imagenusers = $request->imagenusers;
+              $promociones->url=$requuest->url;
               $promociones->save();
               return redirect('promociones')->with('message','data has been updated!');
         }
@@ -123,7 +137,7 @@ class PromocionesController extends Controller {
      */
     public function destroy($idPromocion)
     {
-        $promocion = Promociones::find($idPromocion);
+        $promocion = Promocion::find($idPromocion);
 
         $promocion->delete();
 

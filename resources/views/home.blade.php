@@ -16,9 +16,9 @@
                                     <li> Precio Real: {{$cupon->precioReal}} </li>
                                     <li> Precio de Oferta: {{$cupon->precioOferta}}</li>
                                     <li> Ahorro: {{$cupon->ahorro}}</li>
-                                </ul> 
+                                </ul>
                             </div>
-                            <a href="#" class="btn btn-primary pull-right">Ver Más</a>
+                            <a href="#" data-toggle="popover" class="btn btn-primary pull-right" data-content="yield(pop)">Ver Más</a>
                         </div>
                     </div>
                 </div>
@@ -49,5 +49,9 @@
             </div>
         @endforeach
     </div>
+    <script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
 @endsection
-
