@@ -18,3 +18,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'ContactUSController@contactUS')->name('contact');
 Route::post('contact', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/promociones', 'PromocionesController');
+});
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/cupones', 'CuponesController');
+});
+Route::group(['middleware' => ['web']], function(){
+    Route::resource('/usuarios', 'UsuariosController');
+});
