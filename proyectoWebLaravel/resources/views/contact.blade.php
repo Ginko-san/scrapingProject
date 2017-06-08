@@ -9,7 +9,7 @@
         <div class="col-md-6">
            
 
-				<h1>Contacto</h1>
+				<h1>Contactenos</h1>
 
 				@if(Session::has('success'))
 				    <div class="alert alert-success">
