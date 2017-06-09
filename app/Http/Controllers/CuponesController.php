@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Cupon;
-use DB;
 
 class CuponesController extends Controller {
 
@@ -22,8 +21,6 @@ class CuponesController extends Controller {
     {
       $cupones = Cupon::all();
 
-
-      dd($cupones[0]->primaryKey);
       return view('cupones.index',['cupones'=>$cupones]);
 
     }
@@ -45,17 +42,21 @@ class CuponesController extends Controller {
      */
     public function store(Request $request)//crea un nuevo cliente
     {
-       DB::table('cupones')->insert([
-           'nombre'=>$request->Nombre,
-          'precioReal'=>$request->precioReal,
-          'precioOferta'=>$request->precioOferta,
-          'ahorro'=>$request->ahorro,
-          'cantVentas'=>$request->cantVentas,
-          'validez'=>$request->validez,
-          'imagen'=>$request->imagen,
-          'url'=>$request->url,
-        ]);
-       return back()->with('success', 'Cupon agregado');
+      $this->validate($request,[
+          'nombre'=>'required',
+          'precioReal'=>'required',
+          'precioOferta'=>'required',
+          'ahorro'=>'required',
+          'cantVentas'=>'required',
+          'validez'=>'required',
+          'imagen'=>'required',
+          'url'=>'required',
+          ]);
+
+      $cupon = new Cupon($request->all());
+      $cupon->save();
+      
+      return redirect()->route('cupones.index')->with('message','data has been updated!');
     }
 
     /**
@@ -64,11 +65,11 @@ class CuponesController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    /*public function show($idCupon)
+    public function show($id)
     {
        
         //
-    } */
+    } 
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +81,7 @@ class CuponesController extends Controller {
     {
       $cupon = Cupon::find($id);
 
-      return view('cupones.edit',['cupones'=>$cupon]);
+      return view('cupones.edit',['cupon'=>$cupon]);
     }
 
     /**
@@ -97,17 +98,17 @@ class CuponesController extends Controller {
              abort(404);
         }
         else{
-              $cupones = new Cupon;
-              $cupones->nombre = $request->nombre;
-              $cupones->precioReal = $request->precioReal;
-              $cupones->precioOferta = $request->precioOferta;
-              $cupones->ahorro = $request->ahorro;
-              $cupones->cantVentas = $request->cantVentas;
-              $cupones->validez = $request->validez;
-              $cupones->imagen = $request->imagen;
-              $cupones->url=$requuest->url;
-              $cupones->save();
-              return redirect('cupones')->with('message','data has been updated!');
+              $cupon = Cupon::find($id);
+              $cupon->nombre = $request->nombre;
+              $cupon->precioReal = $request->precioReal;
+              $cupon->precioOferta = $request->precioOferta;
+              $cupon->ahorro = $request->ahorro;
+              $cupon->cantVentas = $request->cantVentas;
+              $cupon->validez = $request->validez;
+              $cupon->imagen = $request->imagen;
+              $cupon->url= $request->url;
+              $cupon->save();
+              return redirect()->route('cupones.index')->with('message','data has been updated!');
         }
     }
 

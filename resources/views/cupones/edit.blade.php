@@ -2,39 +2,39 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form" action="{{route('cupones.index')}}/{{ $cupones->id }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{route('cupones.index')}}/{{ $cupon->id }}" method="POST">
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
-                    <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" value="{{ $cupon->nombre }}">
                 </div>
                 <div class="form-group">
                     <label for="precioReal">Precio Real</label>
-                    <input type="number" class="form-control" id="precioReal" name="precioReal" placeholder="Precio Real"></input>
+                    <input type="number" class="form-control" id="precioReal" name="precioReal" placeholder="Precio Real" value="{{ $cupon->precioReal }}"></input>
                 </div>
                 <div class="form-group">
                     <label for="precioOferta">Precio oferta</label>
-                    <input type="number" class="form-control" id="precioOferta" name="precioOferta" placeholder="Precio Oferta"></input>
+                    <input type="number" class="form-control" id="precioOferta" name="precioOferta" placeholder="Precio Oferta" value="{{ $cupon->precioOferta }}"></input>
                 </div>
                 <div class="form-group">
                     <label for="ahorro">Ahorro</label>
-                    <input type="number" class="form-control" id="ahorro" name="ahorro" placeholder="Ahorro"></input>
+                    <input type="number" class="form-control" id="ahorro" name="ahorro" placeholder="Ahorro" value="{{ $cupon->ahorro }}"></input>
                 </div>
                 <div class="form-group">
                     <label for="cantVentas">Cantidad de ventas</label>
-                    <input type="number" class="form-control" id="cantVentas" name="cantVentas" placeholder="Cantidad de Ventas"></input>
+                    <input type="number" class="form-control" id="cantVentas" name="cantVentas" placeholder="Cantidad de Ventas" value="{{ $cupon->cantVentas }}"></input>
                 </div>
                 <div class="form-group">
                     <label for="validez">Validez</label>
-                    <input type="text" class="form-control" id="validez" name="validez" placeholder="Validez"></input>
+                    <input type="text" class="form-control" id="validez" name="validez" placeholder="Validez" value="{{ $cupon->validez }}"></input>
                 </div>
 
                 <div class="form-group">
                     <label for="imagen">Imagen</label>
-                    <input type="text" class="form-control" id="imagen" name="imagen" placeholder="Imagen"></input>
+                    <input type="text" class="form-control" id="imagen" name="imagen" placeholder="Imagen" value="{{ $cupon->imagen }}"></input>
                 </div>
                 <div class="form-group">
                     <label for="url">URL</label>
-                    <input type="text" class="form-control" id="url" name="url" placeholder="URL"></input>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="URL" value="{{ $cupon->url }}"></input>
                 </div>
                 <div class="form-group">
                          <div class="col-md-6 col-md-offset-4">

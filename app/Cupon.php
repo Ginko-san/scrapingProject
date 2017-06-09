@@ -11,6 +11,6 @@ class Cupon extends Model
     protected $table = 'cupones';
 
     protected $fillable = [
-        'idCupon', 'nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','validez','imagen', 'url',
+        'id', 'nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','validez','imagen', 'url',
     ];
 }

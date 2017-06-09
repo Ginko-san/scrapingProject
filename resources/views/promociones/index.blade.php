@@ -30,15 +30,13 @@
                                 <th>{{ $promocion->imagenusers }}</th>
                                 <th>
                                    <p>
-                                     <a href="{{route('promociones.index')}}/{{ $promociones->idPromocion }}/edit" class="btn btn-primary" role="button">Editar</a>
+                                     <a href="{{route('promociones.index')}}/{{ $promocion->idPromocion }}/edit" class="btn btn-primary" role="button">Editar</a>
                                      
                                      <form action="{{route('promociones.index')}}/{{ $promocion->idPromocion }}" method="POST">
                                        <input type="submit" value="Eliminar">
                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                        <input type="hidden" name="_method" value="DELETE">
                                      </form>
-
-                                     <!--a href="{{route('cliente.index')}}/{{ $cliente->cedula }}" class="btn btn-primary" role="button">Eliminar</a-->
                                   </p>
                                  </th>
                             </tr>
