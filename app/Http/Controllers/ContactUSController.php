@@ -8,6 +8,10 @@ use Mail;
 
 class ContactUSController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the application dashboard.
      *
@@ -15,7 +19,7 @@ class ContactUSController extends Controller
      */
     public function contactUS()
     {
-        return view('contact');
+        return view('contact.contact');
     }
 
     /**

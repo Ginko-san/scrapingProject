@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Pagination\Paginator;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 use Illuminate\Http\Request;
 use DB;
 
@@ -25,9 +28,11 @@ class HomeController extends Controller
     public function index()
     {
 
-        $promociones = DB::table('Promocion')->limit(30)->get();
 
-        $cupones = DB::table('Cupon')->limit(30)->get();
+
+        $promociones = DB::table('promociones')->paginate(6);
+
+        $cupones = DB::table('cupones')->paginate(6);
 
         return view('home',['promociones'=> $promociones , 'cupones' => $cupones]);
     }

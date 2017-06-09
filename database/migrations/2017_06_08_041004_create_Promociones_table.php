@@ -14,19 +14,18 @@ class CreatePromocionesTable extends Migration
     public function up()
     {
         Schema::create('promociones', function (Blueprint $table) {
-            $table->increments('idPromocion');
-            $table->string('nombre', 300);
+            $table->increments('idPromocion')->unique();
+            $table->char('nombre', 255);
             $table->bigInteger('precioReal');
             $table->bigInteger('precioOferta');
             $table->integer('ahorro');
             $table->bigInteger('cantVentas');
             $table->char('validez', 15);
-            $table->string('imagenusers', 300);
+            $table->char('imagenusers', 255);
             $table->string('url');
-
+            $table->rememberToken();
             $table->timestamps();
         });
-        //
     }
 
     /**
