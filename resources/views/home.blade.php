@@ -49,9 +49,45 @@
             </div>
         @endforeach
     </div>
-    <script>
-$(document).ready(function(){
+<div id="footer">
+        <div class="row">
+            <br>
+              <div class="col-md-4">
+                <center>
+                    <img src="http://oi60.tinypic.com/w8lycl.jpg" class="img-circle" alt="the-brains">
+                    <br>
+                    <h4 class="footertext">Backend</h4>
+                    <p class="footertext"><a href="https://www.facebook.com/kim.morales3">Kimberly Morales Arias</a><br>
+                    <p class="footertext"><a href="https://www.facebook.com/GinkoSans">Andrés García Salas</a><br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                    <img src="http://oi60.tinypic.com/2z7enpc.jpg" class="img-circle" alt="...">
+                    <br>
+                    <h4 class="footertext">Frontend</h4>
+                    <p class="footertext"><a href="https://www.facebook.com/paolafabiana.chavesalvarado">Paola Chaves Alvarado</a><br>
+                    <p class="footertext"><a href="https://www.facebook.com/mariela.gomez.9484">Yerlin Ávila Gómez</a><br>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <center>
+                   <img src="http://oi61.tinypic.com/307n6ux.jpg" class="img-circle" alt="...">
+                   <br>
+                   <h4 class="footertext">Lenguaje de Programación</h4>
+                   <p class="footertext"><a href="https://laravel.com/">Laravel</a><br>
+                </center>
+              </div>
+            </div>
+            <div class="row">
+            <p><center><p class="footertext">Copyright 2017</p></center></p>
+        </div>
+</div>
+ <script>
+/**$(document).ready(function(){
     $('[data-toggle="popover"]').popover();
-});
+});*/
 </script>
+
 @endsection
+

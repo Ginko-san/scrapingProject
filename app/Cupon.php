@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cupones extends Model
+class Cupon extends Model
 {
     public $timestamps = false;
     //protected $primaryKey = 'idPromocion';

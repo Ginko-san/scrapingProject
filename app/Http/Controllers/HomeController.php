@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $promociones = DB::table('promociones')->limit(30)->get();
 
-        $cupones = DB::table('promociones')->limit(30)->get();
+        $cupones = DB::table('cupones')->limit(30)->get();
 
         return view('home',['promociones'=> $promociones , 'cupones' => $cupones]);
     }

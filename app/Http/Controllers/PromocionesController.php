@@ -109,7 +109,7 @@ class PromocionesController extends Controller {
      */
     public function update(Request $request,$idPromocion)
     {
-        $cliente = Cliente::find($cedula);
+        $promocion = Promocion::find($idPromocion);
 
         if(!$cliente){
              abort(404);

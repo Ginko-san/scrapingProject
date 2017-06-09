@@ -26,7 +26,6 @@ class CreatePromocionTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
-        //
     }
 
     /**
