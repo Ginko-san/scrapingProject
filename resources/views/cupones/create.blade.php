@@ -1,18 +1,12 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        
         <div class="row">
-          @if(Session::has('message'))
-  				    <div class="alert alert-success">
-  				      {{ Session::get('message') }}
-  				    </div>
-  				@endif
-        </div>
-        <div class="row">
-            <form class="form-horizontal" role="form" action="{{route('cupones.store')}}" method="POST">
+            <form class="form-horizontal" role="form" action="{{ route('cupones.store') }}" method="POST">
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
-                    <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre">
                 </div>
                 <div class="form-group">
                     <label for="precioReal">Precio Real</label>

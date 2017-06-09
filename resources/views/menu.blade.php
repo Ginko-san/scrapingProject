@@ -10,7 +10,12 @@
     <ul class="nav navbar-nav">
       @if (Auth::check())
         <li><a href="{{ url('/home') }}">Home</a></li>
-        <li><a href="{{ url('/contact') }}">Contact</a></li>
+          <li><a href="{{ url('/contact') }}">Contact</a></li>
+        @if (Auth::user()->admin_role)
+          <li><a href="{{ url(route('cupones.index')) }}">Cupones CRUD</a></li>
+          <li><a href="{{ url(route('promociones.index')) }}">Promociones CRUD</a></li>
+        @else
+        @endif
       @else
       @endif
     </ul>
