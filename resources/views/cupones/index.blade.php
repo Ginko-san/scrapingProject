@@ -20,7 +20,7 @@
                     <tbody>
                         @foreach ($cupones as $cupon)
                             <tr>
-                                <th scope="row">{{ $cupon->idCupon }}</th>
+                                <th scope="row">{{ $cupon->id }}</th>
                                 <th>{{ $cupon->nombre }}</th>
                                 <th>{{ $cupon->precioReal }}</th>
                                 <th>{{ $cupon->precioOferta }}</th>
@@ -30,9 +30,9 @@
                                 <th>{{ $cupon->imagen }}</th>
                                 <th>
                                    <p>
-                                    <a href="{{route('cupones.index')}}/{{ $cupones->idCupon}}/edit" class="btn btn-primary" role="button">Editar</a>
+                                   <a href="{{route('cupones.index')}}/{{$cupon->id}}/edit" class="btn btn-primary" role="button">Editar</a>
                                      
-                                     <form action="{{route('cupones.index')}}/{{ $cupon->idCupon }}" method="POST">
+                                     <form action="{{route('cupones.index')}}/{{ $cupon->id}}" method="POST">
                                        <input type="submit" value="Eliminar">
                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                        <input type="hidden" name="_method" value="DELETE">

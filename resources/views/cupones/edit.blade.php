@@ -2,7 +2,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <form class="form-horizontal" role="form" action="{{route('cupones.index')}}/{{ $cupones->idCupon }}" method="POST">
+            <form class="form-horizontal" role="form" action="{{route('cupones.index')}}/{{ $cupones->id }}" method="POST">
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
                     <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">

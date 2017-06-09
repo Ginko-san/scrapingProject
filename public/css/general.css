@@ -1,8 +1,14 @@
-.seccionROW {
-	background-repeat: no-repeat; 
-	background-position: center center; 
+/*.seccionROW {
+	min-height: 500px; 
+
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
 	background-attachment: fixed;
-}
+}*/
 
 h1{
 	padding-left: 5%; 
@@ -11,9 +17,8 @@ h1{
 }
 
 .itemCustom {
-	background-size: 100%; 
-	background-position: center center; 
-	padding-top: 50px; 
-	padding-bottom: 10px; 
+	/*background-size: 100%; 
+	background-position: center center;*/ 
+	padding: 50px 10px; 
 	margin-bottom: 30px;
 }

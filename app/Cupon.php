@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Cupon extends Model
 {
     public $timestamps = false;
-    //protected $primaryKey = 'idPromocion';
+    protected $primaryKey = 'id';
     protected $table = 'cupones';
 
     protected $fillable = [
-        'nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','validez','imagen', 'url',
+        'idCupon', 'nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','validez','imagen', 'url',
     ];
 }

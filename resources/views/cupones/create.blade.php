@@ -9,7 +9,7 @@
   				@endif
         </div>
         <div class="row">
-            <form class="form-horizontal" role="form" action='cupones/store' method="GET">
+            <form class="form-horizontal" role="form" action="{{route('cupones.store')}}" method="POST">
                 <div class="form-group">
                     <label for="Nombre">Nombre</label>
                     <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">

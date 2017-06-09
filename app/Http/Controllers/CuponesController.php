@@ -23,7 +23,10 @@ class CuponesController extends Controller {
     public function index()
     {
       $cupones = Cupon::all();
+
+      dd($cupones[0]->primaryKey);
       return view('cupones.index',['cupones'=>$cupones]);
+
     }
 
     /**
@@ -43,21 +46,8 @@ class CuponesController extends Controller {
      */
     public function store(Request $request)//crea un nuevo cliente
     {
-        $this->validate($request,[
-          'nombre'=>'required',
-          'precioReal'=>'required',
-          'precioOferta'=>'required',
-          'ahorro'=>'required',
-          'cantVentas'=>'required',
-          'validez'=>'required',
-          'imagen'=>'required',
-          'url'=>'required',
-      ]);
-      $cupones = new Cupon($request->all());
-      $cupones->save();
-      DB::table('cupones')->insert(
-        [
-          'nombre'=>$request->Nombre,
+       DB::table('cupones')->insert([
+           'nombre'=>$request->Nombre,
           'precioReal'=>$request->precioReal,
           'precioOferta'=>$request->precioOferta,
           'ahorro'=>$request->ahorro,
@@ -65,10 +55,8 @@ class CuponesController extends Controller {
           'validez'=>$request->validez,
           'imagen'=>$request->imagen,
           'url'=>$request->url,
-      ]
-    );
-
-      return redirect('cupones')->with('message','data has been updated!');
+        ]);
+       return back()->with('success', 'Cupon agregado');
     }
 
     /**
@@ -77,16 +65,11 @@ class CuponesController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    /*public function show($id)
+    /*public function show($idCupon)
     {
-        $cliente = Cliente::find($id);
-        if(!$cliente){
-            abort(404);
-         }
-
-         return view('cliente.detail')->with('cliente',$cliente);
+       
         //
-    }*/
+    } */
 
     /**
      * Show the form for editing the specified resource.
@@ -94,9 +77,9 @@ class CuponesController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function edit($idCupon)
+    public function edit($id)
     {
-      $cupon = Cupon::find($idCupon);
+      $cupon = Cupon::find($id);
 
       return view('cupones.edit',['cupones'=>$cupon]);
     }
@@ -107,9 +90,9 @@ class CuponesController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request,$idCupon)
+    public function update(Request $request,$id)
     {
-        $cupon = Cupon::find($idCupon);
+        $cupon = Cupon::find($id);
 
         if(!$cupon){
              abort(404);
@@ -135,9 +118,9 @@ class CuponesController extends Controller {
      * @param  int  $idPromocion
      * @return Response
      */
-    public function destroy($idCupon)
+    public function destroy($id)
     {
-        $cupon = Cupon::find($idCupon);
+        $cupon = Cupon::find($id);
 
         $cupon->delete();
 
