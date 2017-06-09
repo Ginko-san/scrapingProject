@@ -2,8 +2,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-
 use App\Http\Controllers\Controller;
 use App\Cupon;
 use DB;
@@ -23,6 +21,7 @@ class CuponesController extends Controller {
     public function index()
     {
       $cupones = Cupon::all();
+
 
       dd($cupones[0]->primaryKey);
       return view('cupones.index',['cupones'=>$cupones]);

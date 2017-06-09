@@ -1,26 +1,26 @@
-@extends('layouts.app')
 
-@section('content')
 
+ @section('content')
 <!DOCTYPE HTML>
 <html lang="es">
     <head>
         <meta charset="utf-8" />
         <title>Laravel 5 - @yield('Proyecto Final')</title>
+        
     </head>
+    @extends('layouts.app')
     <body>
         @section('header')
-            <div class="row"> <!--style="background-image: url('imgs/cuponsBackground.jpg'); "> -->
 
-        <div style="color: #FFFFFF !important;">
+            <div class="row seccionROW" style="background-image: url('imgs/cuponsBackground.jpg'); "></div>
 
-            <h1>Cupones</h1><br/>
-            <div style="margin: 2%;" class="h">
-                @foreach ($cupones as $cupon)
-                    <div class="col-md-2">
+            <div class="cuadro">
+                <h1 >Cupones</h1><br/>
+                <div class="container" >
+                    @foreach ($cupones as $cupon)
+                    <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">{{$cupon->nombre}}</div>
-
                             <div class="itemCustom" style="background-image: url('{{$cupon->imagen}}'); ">
                                 <div style="background-color: rgba(0, 0, 0, 0.3); color: white;">
                                    <ul>
@@ -33,37 +33,37 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
+                <?php echo $cupones->render(); ?>
             </div>
+            <div class="row seccionROW" style="background-image: url('imgs/promociones.jpg'); "></div>
 
-        </div>
-
-        </div>
-
-        <div class="row">
-            <br/>
-        </div>
-        <div class="row ">
-            <h1 >Promociones</h1><br/>
-            @foreach ($promociones as $promocion)
-                <div class="col-md-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">{{$promocion->nombre}}</div>
-
-                        <div class="itemCustom" style="background-image: url('{{$promocion->imagen}}'); ">
-                            <div style="background-color: rgba(0, 0, 0, 0.3); color: white;">
-                                <ul>
-                                    <li> Precio Real: {{$promocion->precioReal}} </li>
-                                    <li> Precio de Oferta: {{$promocion->precioOferta}}</li>
-                                    <li> Ahorro: {{$promocion->ahorro}}</li>
-                                </ul>
+            <div class="cuadro">
+                <h1>Promociones</h1><br/>
+                <div class="container" >
+                    @foreach ($promociones as $promocion)
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">{{$promocion->nombre}}</div>
+                            <div class="itemCustom" style="background-image: url('{{$promocion->imagenusers}}'); ">
+                                <div style="background-color: rgba(0, 0, 0, 0.3); color: white;">
+                                    <ul>
+                                        <li> Precio Real: {{$promocion->precioReal}} </li>
+                                        <li> Precio de Oferta: {{$promocion->precioOferta}}</li>
+                                        <li> Ahorro: {{$promocion->ahorro}}</li>
+                                    </ul>
+                                </div>
+                                <a href="#" class="btn btn-primary pull-right">Ver Más</a>
                             </div>
                         </div>
-                        <a href="#" class="btn btn-primary pull-right">Ver Más</a>
                     </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
+                <?php echo $cupones->render(); ?>
+            </div>
+            <div class="row seccionROW" style="background-image: url('imgs/promociones.jpg'); "></div>
+
         @show
          
         <div class="container">
@@ -111,4 +111,3 @@
 </html>
 
 
-@endsection
