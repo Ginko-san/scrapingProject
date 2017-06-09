@@ -1,1 +1,1 @@
-web: vendor/bin/scrapingProject public/ 
+web: vendor/bin/heroku-php-apache2 public/ 
