@@ -61,6 +61,15 @@
                         </div>
                     </form>
                 </div>
+                <div class="panel-body panel-top">
+                    <div class="col-md-offset-6">OR</div>
+                    <div class="col-md-offset-4 col-md-5">
+                        <a class="btn btn-block btn-social btn-facebook" href="{{ route('fb.register') }}">
+                            <span class="fa fa-facebook"></span>
+                            Log in with Facebook
+                        </a>    
+                    </div>                    
+                </div>
             </div>
         </div>
     </div>

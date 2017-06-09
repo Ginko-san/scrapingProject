@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Socialite;
+
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -21,6 +24,45 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+
+
+    /**
+     * Where to redirect users after registration.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/home';
+
+    /**
+     * Redirect the user to the Facebook authentication page.
+     *
+     * @return Response
+     */
+    public function redirectToProvider()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    /**
+     * Obtain the user information from Facebook.
+     *
+     * @return Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('facebook')->user();
+
+        //object to array
+        $user_array = (array)$user;
+
+        event(new Registered($user =  $this->create_facebook_user($user_array)));
+
+        $this->guard()->login($user);
+
+        return $this->registeredCustome($user) ?: redirect(route('home'));
+    }
+
+
 
     /**
      * Where to redirect users after registration.
@@ -67,5 +109,33 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Create a new Facebook user instance.
+     *
+     * @param  array  $data
+     * @return User
+     */
+    protected function create_facebook_user(array $data)
+    {
+        return User::create([
+            'facebook_id' =>  $data['id'],
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['id']),
+        ]);
+    }    
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function registeredCustome($user)
+    {
+        //
     }
 }

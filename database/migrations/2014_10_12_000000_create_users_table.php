@@ -15,11 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('facebook_id')->unique();
+            $table->string('facebook_id')->default('default');
             $table->string('name');
+            $table->boolean('admin_role')->default(0);
             $table->string('email')->unique();
             $table->string('password') ;
-            $table->enum('type',['usuarios','admin'])->default('usuarios');
             $table->rememberToken();
             $table->timestamps();
         });
