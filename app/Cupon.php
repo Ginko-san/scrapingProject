@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Cupon extends Model
 {
     public $timestamps = false;
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'nombre';
     protected $table = 'cupones';
 
     protected $fillable = [
