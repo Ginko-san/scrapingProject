@@ -12,28 +12,8 @@ use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
 
-    use RegistersUsers;
-
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
+     /**
      * Redirect the user to the Facebook authentication page.
      *
      * @return Response
@@ -58,10 +38,24 @@ class RegisterController extends Controller
         event(new Registered($user =  $this->create_facebook_user($user_array)));
 
         $this->guard()->login($user);
-
-        return $this->registeredCustome($user) ?: redirect(route('home'));
+        
+        return $this->registeredCustome( $user)
+                        ?: redirect($this->redirectPath());
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use RegistersUsers;
 
 
     /**
@@ -138,4 +132,5 @@ class RegisterController extends Controller
     {
         //
     }
+
 }

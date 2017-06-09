@@ -11,30 +11,32 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', function(){
+	return redirect()->route('login');
+});
+
+Route::group(['middleware'=>'web'], function (){
+
+	Auth::routes();
+
+});
+
+Route::group(['middleware' => ['auth']], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+
+	//Rutas generales
+    Route::resource('/promociones', 'PromocionesController');
+    Route::resource('/cupones', 'CuponesController');
 
 
-Auth::routes();
+	//Rutas de contact
+	Route::get('/contact', 'ContactUSController@contactUS')->name('contact');
+	Route::post('contact', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
+});
 
 
 Route::get('login/auth/facebook', 'Auth\RegisterController@redirectToProvider')->name('fb.register');
 Route::get('login/auth/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-//Rutas de contact
-Route::get('/contact', 'ContactUSController@contactUS')->name('contact');
-Route::post('contact', ['as'=>'contactus.store','uses'=>'ContactUSController@contactUSPost']);
-
-
-//Rutas generales
-Route::group(['middleware' => ['web']], function(){
-    Route::resource('/promociones', 'PromocionesController');
-    Route::resource('/cupones', 'CuponesController');
-});
-
-
 
 
 //Rutas de promociones

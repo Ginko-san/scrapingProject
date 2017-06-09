@@ -27,9 +27,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-
-
         $promociones = DB::table('promociones')->paginate(6);
 
         $cupones = DB::table('cupones')->paginate(6);
