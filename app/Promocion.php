@@ -11,6 +11,7 @@ class Promocion extends Model
     protected $table = 'promociones';
 
     protected $fillable = [
-        'idPromocion','nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','validez','imagenusers','url',
+        'idPromocion','nombre', 'precioReal', 'precioOferta','ahorro','cantVentas','imagenusers','url',
     ];
+    
 }
