@@ -30,7 +30,7 @@
                                         <li> Ahorro: {{$cupon->ahorro}}</li>
                                     </ul>
                                 </div>
-                                <a href="#" data-toggle="popover" class="btn btn-primary pull-right" data-content="yield(pop)">Ver Más</a>
+                                <a href="{{route('cupones.index')}}/{{$cupon->id}}" data-toggle="popover" class="btn btn-primary pull-right" data-content="yield(pop)">Ver Más</a>
                             </div>
                         </div>
 
@@ -38,6 +38,7 @@
                     @endforeach
 
                 </div>
+
                 <h1>Top 5 cupones</h1><br>
                 <aside class="col-md-4" id="slideSection">
                   <div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -98,16 +99,36 @@
                             <div class="itemCustom" style="background-image: url('{{$promocion->imagenusers}}'); ">
                                 <div style="background-color: rgba(0, 0, 0, 0.3); color: white;">
                                     <ul>
-                                        <li> Precio Real: {{$promocion->precioReal}} </li>
                                         <li> Precio de Oferta: {{$promocion->precioOferta}}</li>
-                                        <li> Ahorro: {{$promocion->ahorro}}</li>
                                     </ul>
                                 </div>
-                                <a href="#" class="btn btn-primary pull-right">Ver Más</a>
+                                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Ver</button>s
                             </div>
                         </div>
                     </div>
                     @endforeach
+                </div>
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">{{$promocion->nombre}}</h4>
+
+                      </div>
+                      <div class="modal-body">
+                        <div class="itemCustom" style="background-image: url('{{$promocion->imagenusers}}'); "></div>
+                          <ul>
+                              <li> Precio Real: {{$promocion->precioReal}} </li>
+                              <li> Precio de Oferta: {{$promocion->precioOferta}}</li>
+                              <li> Ahorro: {{$promocion->ahorro}}</li>
+                          </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               <h2>Top 5 promociones</h2><br>
                 <aside class="col-md-4" id="slideSection">
