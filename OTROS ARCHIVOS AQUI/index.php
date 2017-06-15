@@ -1,15 +1,13 @@
 <?php
 
 function scrappingYuplon(){
-
+  //Credenciales de la base de datos
     $servername = "us-cdbr-iron-east-03.cleardb.net";
     $username = "b1a95458d84cd3";
     $password = "85c25163";
 
-    //Create connection
+    //Conexión
     $conn = new mysqli($servername, $username, $password);
-
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -25,12 +23,15 @@ function scrappingYuplon(){
   $html->loadHTML($file);
   libxml_clear_errors();
   $xpath = new DOMXPath($html);
+  /*Se realiza la recolección de todas las url de cada promoción que se encuentre,
+  y se almacena en el array $referenciasY*/
   $referenciasY = array();
   $namesY = $xpath->query("//div[@class='extra-campaign']/a");
   for($j = 0; $j < $namesY->length; $j++){
     array_push($referenciasY,$namesY[$j]->getAttribute('href'));
   }
-  for ($i=0; $i < 35; $i++) {
+  for ($i=0; $i < 35; $i++) { /*se ejecuta 35 veces para extraer todos los
+    datos de los cupones, agregando al url origal cada una de los url de cada promoción */
     $file = file_get_contents($urlY.$referenciasY[$i]);
     libxml_use_internal_errors(true);
     $html = new DOMDocument();
@@ -55,13 +56,15 @@ function scrappingYuplon(){
     $imagen = $xpath->query('//div[@id="slideshow"]/img');
     $size = 100 / $imagen->length;
     $InsertarsrcSkin = $imagen[0]->getAttribute('src');
+    /*Una vez que se optiene toda la información de las promociones, se ingresan
+    a la base de datos.*/
     $sql = "INSERT INTO promociones (idPromocion,nombre, precioReal, precioOferta,ahorro,cantVentas,imagenusers,url)
                  VALUES ('".$titiID."','".$Insertarnombre."',
                  '".$InsertarpreR."',
                  '".$Insertarpre."','".$Insertardescuento."',
                  '".$Insertarvend."','".$InsertarsrcSkin."','".$urlY.$referenciasY[$i]."')";
     if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
+      echo "Nueva fila agregada";
     } else {
           echo "Error: " . $sql . "<br>" . $conn->error;
     }
@@ -69,15 +72,13 @@ function scrappingYuplon(){
 }
 
 function scrappingTitiCupon(){
-
+  //Credenciales de la base de datos
   $servername = "us-cdbr-iron-east-03.cleardb.net";
   $username = "b1a95458d84cd3";
   $password = "85c25163";
-
-  //Create connection
+  //Se levanta la instancia.
   $conn = new mysqli($servername, $username, $password);
 
-  // Check connection
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
@@ -99,11 +100,9 @@ mysqli_select_db($conn,"heroku_8c738f6ddf6cfcd");
   $cont=0;
     for($j = 0; $j < $namesT1->length; $j++){
         array_push($referencias,$namesT1[$j]->getAttribute('href'));
-        #echo $namesT1[$j]->getAttribute('href')."<br>";
       }
       for($j = 0; $j < $namesT2->length; $j++){
           array_push($referencias,$namesT2[$j]->getAttribute('href'));
-          #echo $namesT2[$j]->getAttribute('href')."<br>";
         }
   for ($i=0; $i < 37; $i++) {
     $file = file_get_contents($urlTiti.$referencias[$i]);
@@ -135,25 +134,26 @@ mysqli_select_db($conn,"heroku_8c738f6ddf6cfcd");
                 '".$vend."','".$fech."','".$srcSkin."','".$urlTiti.$referencias[$i]."')";
 
   if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
+      echo "Nueva fila agregada";
   } else {
       echo "Error: " . $sql . "<br>" . $conn->error;
   }
 
   }
 }
-scrappingTitiCupon();
-scrappingYuplon();
-/*
+//scrappingTitiCupon();
+//scrappingYuplon();
+
 $start = microtime(true);
-set_time_limit(60);
-for ($i = 0; $i < 59; ++$i) {
-  if($i == 50){
-      echo $i."holi holi holi";
+set_time_limit(3600);
+for ($i = 0; $i < 3601; ++$i) {
+  if($i == 3600){
+    scrappingTitiCupon();
+    scrappingYuplon();
   }
-    time_sleep_until($start + $i + 1);
+  time_sleep_until($start + $i + 1);
 }
-*/
+
 
 
  ?>
