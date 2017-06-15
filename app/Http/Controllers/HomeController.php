@@ -37,9 +37,10 @@ class HomeController extends Controller
        // $articulos = DB::table('cupones')->sortByDesc('cantVentas')->values()->all();
 
         $articulos = DB::table('cupones')->orderBy('cantVentas', 'desc')->get();
-      
+        $promotions = DB::table('promociones')->orderBy('cantVentas', 'desc')->get();
 
-        return view('home',['promociones'=> $promociones , 'cupones' => $cupones, 'articulos'=> $articulos]);
+
+        return view('home',['promociones'=> $promociones , 'cupones' => $cupones, 'articulos'=> $articulos, 'promotions'=>$promotions]);
     }
 
 

@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Laravel 5 - @yield('Proyecto Final')</title>
-        
+
     </head>
     @extends('layouts.app')
     <body>
@@ -17,7 +17,7 @@
             <div class="cuadro">
                 <h1 >Cupones</h1><br/>
                 <div class="container" >
-                 <div class="col-md-10">
+                 <div class="col-md-8">
                     @foreach ($cupones as $cupon)
                     <div class="col-md-5">
                         <div class="panel panel-default">
@@ -36,51 +36,52 @@
 
                     </div>
                     @endforeach
-                    
-                </div>
-                <div class="col-md-2">
-                            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                               
-                                <ol class="carousel-indicators">
-                                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                                    <li data-target="#myCarousel" data-slide-to="4"></li>
-                                  </ol>
-
-                                  <!-- Wrapper for slides -->
-                                  <div class="carousel-inner">
-                                    <div class="item active">
-                                      <img src="{{$articulos[0]->imagen}}" alt="Los Angeles">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{$articulos[1]->imagen}}" alt="Chicago">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{$articulos[2]->imagen}}" alt="Chicago">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{$articulos[3]->imagen}}" alt="Chicago">
-                                    </div>
-                                    <div class="item">
-                                        <img src="{{$articulos[4]->imagen}}" alt="Chicago">
-                                    </div>
-                                  </div>
-                               
-                                                                 <!-- Left and right controls -->
-                                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                    <span class="glyphicon glyphicon-chevron-left"></span>
-                                    <span class="sr-only">Previous</span>
-                                  </a>
-                                  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                    <span class="sr-only">Next</span>
-                                  </a>
-                                </div>
 
                 </div>
+                <h1>Top 5 cupones</h1><br>
+                <aside class="col-md-4" id="slideSection">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
+                      <ol class="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                          <li data-target="#myCarousel" data-slide-to="3"></li>
+                          <li data-target="#myCarousel" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="item active">
+                            <div class="panel-heading">{{$articulos[0]->nombre}}</div>
+                            <img src="{{$articulos[0]->imagen}}"  "max-width:600px">
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$articulos[1]->nombre}}</div>
+                              <img src="{{$articulos[1]->imagen}}" >
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$articulos[2]->nombre}}</div>
+                              <img src="{{$articulos[2]->imagen}}" >
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$articulos[3]->nombre}}</div>
+                              <img src="{{$articulos[3]->imagen}}" >
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$articulos[4]->nombre}}</div>
+                              <img src="{{$articulos[4]->imagen}}" >
+                          </div>
+                        </div>
+                                                     <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                </aside>
                 </div>
                 <?php echo $cupones->render(); ?>
             </div>
@@ -89,7 +90,7 @@
             <div class="cuadro">
                 <h1>Promociones</h1><br/>
                 <div class="container" >
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                     @foreach ($promociones as $promocion)
                     <div class="col-md-5">
                         <div class="panel panel-default">
@@ -108,20 +109,60 @@
                     </div>
                     @endforeach
                 </div>
-                <div class="col-md-2">
-                            "hi"
-                </div>
+              <h2>Top 5 promociones</h2><br>
+                <aside class="col-md-4" id="slideSection">
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                      <ol class="carousel-indicators">
+                          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li data-target="#myCarousel" data-slide-to="1"></li>
+                          <li data-target="#myCarousel" data-slide-to="2"></li>
+                          <li data-target="#myCarousel" data-slide-to="3"></li>
+                          <li data-target="#myCarousel" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                          <div class="item active">
+                            <div class="panel-heading">{{$promotions[0]->nombre}}</div>
+                            <img src="{{$promotions[0]->imagenusers}}"  "max-width:600px">
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$promotions[1]->nombre}}</div>
+                              <img src="{{$promotions[1]->imagenusers}}" >
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$promotions[2]->nombre}}</div>
+                              <img src="{{$promotions[2]->imagenusers}}">
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$promotions[3]->nombre}}</div>
+                              <img src="{{$promotions[3]->imagenusers}}" >
+                          </div>
+                          <div class="item">
+                            <div class="panel-heading">{{$promotions[4]->nombre}}</div>
+                              <img src="{{$promotions[4]->imagenusers}}">
+                          </div>
+                        </div>
+                                                     <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                </aside>
                 </div>
                 <?php echo $cupones->render(); ?>
             </div>
             <div class="row seccionROW" style="background-image: url('imgs/promociones.jpg'); "></div>
 
         @show
-         
+
         <div class="container">
             @yield('content')
         </div>
- 
+
         @section('footer')
             <div id="footer">
                 <div class="row">
@@ -158,8 +199,6 @@
                 </div>
              </div>
         @show
-        
+
     </body>
 </html>
-
-
